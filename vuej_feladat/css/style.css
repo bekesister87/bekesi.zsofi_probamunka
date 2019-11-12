@@ -1,0 +1,35 @@
+  #inspire{
+       margin: 0px;
+       padding: 0px;
+       border:0px;
+       background-image: url('../img/website-bg.png'); 
+       height: 100vh;
+        background-repeat: no-repeat;
+        width: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+   }
+
+   .theme--light.v-footer {
+    background-color:#fff; 
+    margin: 0;
+    padding: 0;
+}
+
+.v-input {
+   flex: 0;
+   }
+
+   .search-input {
+       background-color: #fff;
+       height: 50px;
+       border: solid 1px #ccc;
+       padding:10px;
+       margin: 10px;
+       border-radius:4px;
+       box-shadow: black;
+       margin-top: 20px;
+    }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Vue js_datatable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+ </head>
+   <body>
+    <div id="app">
+        <v-app id="inspire">
+                <v-card-title class="teal white--text">
+                  <strong class="subheading">Alkalmazottak Jogosultsága</strong>
+                    </v-card-title>
+                    <v-text-field
+                    v-model="search"
+                    append-icon="search"
+                    label="Search"
+                    single-line
+                    hide-details
+                    class="search-input"
+                    ></v-text-field>
+                    <v-data-table
+                    :headers="headers"
+                    :items="demousers"
+                    :search="search"
+                    sort-by="users"
+                    class="elevation-1 ma-4"
+                  >
+                    <template v-slot:top>
+                      <v-toolbar flat color="white">
+                        <v-toolbar-title class="ma-3">Alkalmazottak</v-toolbar-title>
+                        <v-divider
+                          class=""
+                          inset
+                          vertical
+                        ></v-divider>
+                        <v-spacer></v-spacer>
+                        <v-dialog v-model="dialog" max-width="500px">
+                          <template v-slot:activator="{ on }">
+                            <v-btn color="primary" dark class="mb-2" v-on="on">Új hozzáadás</v-btn>
+                          </template>
+                          <v-card>
+                            <v-card-title>
+                              <span class="headline">{{ formTitle }}</span>
+                            </v-card-title>
+                
+                            <v-card-text>
+                              <v-container>
+                              <v-row>
+                                  <v-col cols="12" sm="6" md="5">
+                                    <v-text-field v-model="editedItem.id" label="Id"></v-text-field>
+                                  </v-col>
+                                  <v-col cols="12" sm="6" md="5">
+                                    <v-text-field v-model="editedItem.name" label="Név"></v-text-field>
+                                  </v-col>
+                                  <v-col cols="12" sm="6" md="5">
+                                      <v-select
+                                  :items="items"
+                                    label="Jogosultság"
+                                      v-model="editedItem.permission"
+                                    ></v-select>
+                                 </v-col>
+                                  <v-col cols="12" sm="6" md="5">
+                                    <v-text-field v-model="editedItem.age" label="Életkor"></v-text-field>
+                                  </v-col>
+                                  <v-col cols="12" sm="6" md="5">
+                                      <v-text-field v-model="editedItem.register_date" label="Regisztrált időpont"></v-text-field>
+                                  </v-col>
+                                  <v-col cols="12" sm="6" md="5">
+                                    <v-text-field v-model="editedItem.work" label="Munkahely"></v-text-field>
+                                  </v-col>
+                                  </v-row>
+                              </v-container>
+                            </v-card-text>
+                             <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn color="blue darken-1" text @click="close">Mégse</v-btn>
+                              <v-btn color="blue darken-1" text @click="save">Mentés</v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-toolbar>
+                    </template>
+                    <template v-slot:item.action="{ item}">
+                      <v-icon
+                        small
+                        class="mr-2"
+                        @click="editItem(item)"
+                      >
+                        edit
+                      </v-icon>
+                      <v-icon
+                        small
+                        @click="deleteItem(item)"
+                      >
+                        delete
+                      </v-icon>
+                    </template>
+
+                   <template v-slot:no-data>
+                      <v-btn color="primary" @click="initialize">Reset</v-btn>
+                    </template>
+                  </v-data-table>
+                 <v-footer
+                absolute
+                class="font-weight-medium"
+              >
+                <v-col
+                  class="text-center"
+                  cols="12"
+                >
+                  {{ new Date().getFullYear() }} — <strong>Békési Zsófia | Alkalmazottak Jogosultsága</strong>
+                </v-col>
+              </v-footer>   
+        </v-app>
+      </div>
+   
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="js/main.js"></script>
+
+
+</body>
+</html>
